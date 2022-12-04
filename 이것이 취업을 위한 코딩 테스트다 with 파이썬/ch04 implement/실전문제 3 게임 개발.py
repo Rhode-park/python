@@ -6,5 +6,3 @@ for i in range(n):
     mapData.append(list(map(int, input().split())))
 
 def turnLeft():
-
-    d
