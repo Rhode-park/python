@@ -1,4 +1,4 @@
-#https://www.acmicpc.net/problem/4673
+# https://www.acmicpc.net/problem/4673
 
 totalNumber = set(range(1,10001))
 
