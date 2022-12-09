@@ -1,9 +1,32 @@
+from collections import deque
 
-def a():
-    for i in range(10):
-        if i%2 == 0:
-            return True
-        return False
+n, m = map(int, input().split())
 
-if a() == True:
-    print('a')
+graph = []
+for i in range(n):
+    graph.append(list(map(int, input())))
+
+x, y = 1, 1
+endX, endY = n, m
+
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+
+def bfs(x, y):
+    queue = deque()
+    queue.append((x, y))
+    while queue:
+        x, y = queue.popleft()
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+            if nx<0 or nx>=n or ny<0 or ny>=m:
+                continue
+            if graph[nx][ny] == 0:
+                continue
+            if graph[nx][ny] == 1:
+                graph[nx][ny] = graph[x][y] + 1  # 이부분 이해 못했음
+                queue.append((nx, ny))
+    return(graph[n-1][m-1])  # 이부분 이해 못했음
+
+print(bfs(0,0))
