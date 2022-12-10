@@ -7,7 +7,6 @@ for i in range(n):
     graph.append(list(map(int, input())))
 
 x, y = 1, 1
-endX, endY = n, m
 
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
@@ -24,9 +23,10 @@ def bfs(x, y):
                 continue
             if graph[nx][ny] == 0:
                 continue
+            # 해당 노드를 처음 방문하는 경우에만 최단거리 기록
             if graph[nx][ny] == 1:
-                graph[nx][ny] = graph[x][y] + 1  # 이부분 이해 못했음
+                graph[nx][ny] = graph[x][y] + 1  # graph[x][y]의 최단거리에다가 1을 더한게 graph[nx][ny]의 거리
                 queue.append((nx, ny))
-    return(graph[n-1][m-1])  # 이부분 이해 못했음
+    return(graph[n-1][m-1])  # (n-1, m-1)의 좌표에 출구가 있으므로 출구에 해당하는 값을 return
 
 print(bfs(0,0))
