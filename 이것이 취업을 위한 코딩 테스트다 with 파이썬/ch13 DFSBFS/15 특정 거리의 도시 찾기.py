@@ -1,17 +1,20 @@
 # https://www.acmicpc.net/problem/18352
 
+import sys
 from collections import deque
+
+input = sys.stdin.readline
 
 n, m, k, x = map(int, input().split())
 
-graph = [[] for _ in range(n+1)]
+graph = [[] for i in range(n+1)]
 
-for _ in range(m):
+for i in range(m):
     a, b = map(int, input().split())
-    graph[a].append(b)  # 단방향도로이므로 graph[b].append(a)는 해주지 않음
+    graph[a].append(b)
 
-distance = [-1] * (n+1)
-distance[x] = 0
+distance = [-1 for i in range(n+1)]
+distance[x] = 0  # 출발지점의 거리는 0으로 초기화 해주기!!
 
 queue = deque()
 queue.append(x)
@@ -24,12 +27,15 @@ while queue:
 
 count = 0
 
-for i in range(1, n+1):
+for i in range(1,n+1):
     if distance[i] == k:
         print(i)
         count += 1
-
 if count == 0:
-    print(-1)
+    print("-1")
 
-# 시간 초과 뜸.. 왜지..?
+
+# 런타임 에러 떴음
+# import sys
+# input = sys.stdin.readline
+# 이렇게 두 줄 추가했더니 해결 됨
