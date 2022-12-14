@@ -1,5 +1,7 @@
 # https://programmers.co.kr/learn/courses/30/lessons/60058
 
+# 정답보고 풀었음
+
 p = input()
 
 def checkCorrect(x):  # 이해가 안 됨
