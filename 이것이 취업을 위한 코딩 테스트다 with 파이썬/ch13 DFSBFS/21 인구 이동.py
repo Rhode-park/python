@@ -2,7 +2,10 @@
 
 # 정답풀이
 
+
 from collections import deque
+import sys
+input = sys.stdin.readline
 
 n, l, r = map(int, input().split())
 
@@ -20,7 +23,7 @@ def process(x,y,index):
     united.append((x,y))
     queue = deque()
     queue.append((x,y))
-    union[x][y] = index
+    union[x][y] = index  # 현재 연합의 번호 할당 : 무슨 의미가 있는지 모르겠음
     summary = graph[x][y]
     count = 1
     while queue:
@@ -28,10 +31,10 @@ def process(x,y,index):
         for i in range(4):
             nx = x + dx[i]
             ny = y + dy[i]
-            if 0<=nx and nx<n and 0<=ny and ny<n and union[nx][ny] == -1:
+            if 0<=nx and nx<n and 0<=ny and ny<n and union[nx][ny] == -1:  # union[nx][ny] == -1 는 왜 하는거지? 안 가본데 찾으려고?
                 if l <= abs(graph[nx][ny] - graph[x][y]) <= r:
                     queue.append((nx,ny))
-                    union[nx][ny] = index
+                    union[nx][ny] = index  # index로 해주는 이유는 뭐지? 0이나 1이나 true false로 안 하고?  
                     summary += graph[nx][ny]
                     count += 1
                     united.append((nx,ny))
