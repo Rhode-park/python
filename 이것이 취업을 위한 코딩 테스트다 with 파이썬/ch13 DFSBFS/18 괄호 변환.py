@@ -4,7 +4,7 @@
 
 p = input()
 
-def checkCorrect(x):  # 이해가 안 됨
+def checkCorrect(x):  # stack의 개념
     count = 0
     for i in range(len(x)-1):
         if x[i] == '(':
@@ -22,7 +22,9 @@ def devide(x):
     for i in range(2, len(x), 2):
         u = p[0:i]
         v = p[i:len(p)]
-        print(u, v)
+        if checkCorrect(u) == True:
+            devide(v)
+
 
 
 if checkCorrect(p) == True:

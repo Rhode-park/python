@@ -2,7 +2,6 @@
 
 # 정답풀이
 
-
 from collections import deque
 import sys
 input = sys.stdin.readline
@@ -34,7 +33,7 @@ def process(x,y,index):
             if 0<=nx and nx<n and 0<=ny and ny<n and union[nx][ny] == -1:  # union[nx][ny] == -1 는 왜 하는거지? 안 가본데 찾으려고?
                 if l <= abs(graph[nx][ny] - graph[x][y]) <= r:
                     queue.append((nx,ny))
-                    union[nx][ny] = index  # index로 해주는 이유는 뭐지? 0이나 1이나 true false로 안 하고?  
+                    union[nx][ny] = index  # index로 해주는 이유는 뭐지? 0이나 1이나 true false로 안 하고?
                     summary += graph[nx][ny]
                     count += 1
                     united.append((nx,ny))
@@ -52,7 +51,7 @@ while True:
             if union[i][j] == -1:
                 process(i,j,index)
                 index += 1
-    if index == n*n:
+    if index == n*n:  # 연합이 없고 모두 각자도생국가일 경우
         break
     totalCount += 1
 
